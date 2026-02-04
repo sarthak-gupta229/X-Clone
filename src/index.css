@@ -5,3 +5,20 @@ body {
   background-color: #000000;
   
 }
+.record-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #ED2224;
+  border-radius: 50%;
+  animation: blink 1s infinite;
+  opacity: 50%;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

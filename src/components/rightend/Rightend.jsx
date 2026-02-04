@@ -1,6 +1,7 @@
 import React from "react";
-import { Search, BadgeCheck, } from "lucide-react";
+import { Search, BadgeCheck } from "lucide-react";
 import { useState, useEffect } from "react";
+import "../../index.css";
 
 function TrendingPosts() {
   const [posts, setPosts] = useState([]);
@@ -80,6 +81,9 @@ function Rightend() {
             <p>Aajtak</p>
             <BadgeCheck className="fill-[#1c8cd8]" />
             <p className="text-sm text-gray-400">is hosting</p>
+            <div className="flex items-center gap-2">
+              <span className="record-dot"></span>
+            </div>
           </div>
           <div className="flex justify-between">
             <p>देखिए अब तक की बड़ी सुर्खियां</p>
@@ -99,6 +103,11 @@ function Rightend() {
           <TrendingPosts />
         </div>
       </div>
+      <hr class="border-t border-[#2f3336] my-4" />
+      <p className="text-xs text-[#2f3336] text-center">
+        Terms of Service | Privacy Policy | Cookie Policy | Accessibility | Ads
+        info | More © 2026 X Corp.
+      </p>
     </aside>
   );
 }
