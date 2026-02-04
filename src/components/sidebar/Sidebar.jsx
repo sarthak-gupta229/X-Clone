@@ -10,12 +10,9 @@ import {
   User,
   MoreHorizontal,
   UserPlus,
-  
- 
 } from "lucide-react";
 
-
- const sidebarLinks = [
+const sidebarLinks = [
   {
     label: "Home",
     path: "/",
@@ -31,21 +28,21 @@ import {
     path: "/follow",
     icon: UserPlus,
   },
-//   {
-//     label: "Notifications",
-//     path: "/notifications",
-//     icon: Bell,
-//   },
-//   {
-//     label: "Messages",
-//     path: "/messages",
-//     icon: Mail,
-//   },
-//   {
-//     label: "Bookmarks",
-//     path: "/bookmarks",
-//     icon: Bookmark,
-//   },
+  //   {
+  //     label: "Notifications",
+  //     path: "/notifications",
+  //     icon: Bell,
+  //   },
+  //   {
+  //     label: "Messages",
+  //     path: "/messages",
+  //     icon: Mail,
+  //   },
+  //   {
+  //     label: "Bookmarks",
+  //     path: "/bookmarks",
+  //     icon: Bookmark,
+  //   },
   {
     label: "Profile",
     path: "/profile",
@@ -53,49 +50,42 @@ import {
   },
 ];
 
-
 function Sidebar() {
   return (
     <div className="hidden lg:block h-screen px-30 py-2 w-[400px] bg-black border-r border-black border-r-[#2f3336] flex flex-col border box-border">
-        <div className="p-3 mb-4 rounded-full hover:bg-gray-100 w-fit cursor-pointer invert hover:invert-0">
-            <img
-            src="logos/x-logo.png "
-            alt="Twitter"
-            className="w-7 h-7 object-contain "
-            >
-            </img>
-        </div>
+      <div className="p-3 mb-4 rounded-full hover:bg-[#181818] w-fit cursor-pointer invert hover:invert-0">
+        <img
+          src="logos/x-logo.png "
+          alt="Twitter"
+          className="w-7 h-7 object-contain "
+        ></img>
+      </div>
 
-
-        
-        <div>
-            <nav className="flex flex-col gap-1">
-            {sidebarLinks.map((item)=>{
-                const Icon = item.icon;
-                return(
-                    <NavLink
-                        key={item.path}
-                        to={item.path}
-                        className={({ isActive }) =>
-                        `flex items-center gap-4 px-4 py-3 rounded-full text-lg transition
+      <div>
+        <nav className="flex flex-col gap-1">
+          {sidebarLinks.map((item) => {
+            const Icon = item.icon;
+            return (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={({ isActive }) =>
+                  `flex items-center gap-4 px-4 py-3 rounded-full text-lg transition
                         hover:bg-[#181818] hover:text-white
                         ${isActive ? "font-bold" : "font-normal"}`
-                        }
-                    >
-                    <Icon size={24} />
-                    <span>{item.label}</span>
-                    </NavLink>
-                )  
-            })}
-                
-            </nav>
-        </div>
+                }
+              >
+                <Icon size={24} />
+                <span>{item.label}</span>
+              </NavLink>
+            );
+          })}
+        </nav>
+      </div>
 
-       <button className="mt-4 bg-white text-black py-3 w-50 rounded-full font-bold text-lg hover:bg-gray-200 transition">
+      <button className="mt-4 bg-white text-black py-3 w-50 rounded-full font-bold text-lg hover:bg-gray-200 transition">
         Post
-       </button>
-       
-        
+      </button>
     </div>
   );
 }
