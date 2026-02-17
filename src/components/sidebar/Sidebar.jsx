@@ -15,17 +15,17 @@ import {
 const sidebarLinks = [
   {
     label: "Home",
-    path: "/",
+    path: "/app/home",
     icon: Home,
   },
   {
     label: "Explore",
-    path: "/explore",
+    path: "/app/explore",
     icon: Search,
   },
   {
     label: "Follow",
-    path: "/follow",
+    path: "/app/follow",
     icon: UserPlus,
   },
   //   {
@@ -45,7 +45,7 @@ const sidebarLinks = [
   //   },
   {
     label: "Profile",
-    path: "/profile",
+    path: "/app/profile",
     icon: User,
   },
 ];
@@ -55,7 +55,7 @@ function Sidebar() {
     <div className="hidden lg:block h-screen px-30 py-2 w-[400px] bg-black border-r border-black border-r-[#2f3336] flex flex-col border box-border">
       <div className="p-3 mb-4 rounded-full hover:bg-[#181818] w-fit cursor-pointer invert hover:invert-0">
         <img
-          src="logos/x-logo.png "
+          src="/logos/x-logo.png "
           alt="Twitter"
           className="w-7 h-7 object-contain "
         ></img>
@@ -86,6 +86,8 @@ function Sidebar() {
       <button className="mt-4 bg-white text-black py-3 w-50 rounded-full font-bold text-lg hover:bg-gray-200 transition">
         Post
       </button>
+  
+
     </div>
   );
 }

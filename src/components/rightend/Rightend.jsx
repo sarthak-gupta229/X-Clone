@@ -7,7 +7,7 @@ function TrendingPosts() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("//www.reddit.com/r/popular.json?limit=5")
+    fetch("/api/r/popular.json?limit=5")
       .then((res) => res.json())
       .then((data) => {
         const formatted = data.data.children.map((item) => ({
@@ -73,7 +73,7 @@ function Rightend() {
           <div className="flex gap-1">
             <div className="rounded-full w-fit bg-[#ED2224] ">
               <img
-                src="logos/aajtak.jpeg"
+                src="/logos/aajtak.jpeg"
                 alt="aajtak"
                 className="w-6 h-6 object-contain rounded-full"
               />
@@ -90,7 +90,7 @@ function Rightend() {
             <div className="border-2 border-[#E86666] gap-1 flex  rounded-xl">
               <div className="rounded-full w-fit bg-[#ED2224] ">
                 <img
-                  src="logos/aajtak.jpeg"
+                  src="/logos/aajtak.jpeg"
                   alt="aajtak"
                   className="w-6 h-6 object-contain rounded-full"
                 />

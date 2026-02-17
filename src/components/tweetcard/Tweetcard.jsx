@@ -25,7 +25,7 @@ function Tweetcard({ post }) {
           <p className="text-white mt-1 text-[15px]">{post.text}</p>
         </div>
       </div>
-       {/* mediaa */}
+      {/* mediaa */}
       {(post.image || post.video) && (
         <div className="relative mt-3 rounded-2xl overflow-hidden border border-gray-800">
           {post.video ? (
@@ -37,29 +37,25 @@ function Tweetcard({ post }) {
               autoPlay
             />
           ) : (
-            <img
-              src={post.image}
-              className="w-full object-cover"
-            />
+            <img src={post.image} className="w-full object-cover" />
           )}
         </div>
       )}
       {/* liks etc */}
       <div className="flex justify-between text-gray-400 mt-3 text-sm max-w-md">
+        <span className="flex items-center gap-1 hover:text-pink-500 cursor-pointer">
+          <Heart size={16} /> {post.likes}
+        </span>
         <span className="flex items-center gap-1 hover:text-blue-400 cursor-pointer">
           <MessageCircle size={16} /> {post.comments}
         </span>
         <span className="flex items-center gap-1 hover:text-green-400 cursor-pointer">
           <Repeat size={16} />
         </span>
-        <span className="flex items-center gap-1 hover:text-pink-500 cursor-pointer">
-          <Heart size={16} /> {post.likes}
-        </span>
         <span className="flex items-center gap-1">
           <BarChart2 size={16} />
         </span>
       </div>
-
     </div>
   );
 }

@@ -4,14 +4,18 @@ import Home from "./components/home/Home";
 import Explore from "./components/explore/Explore";
 import Follow from "./components/follow/Follow";
 import Profile from "./components/profile/Profile";
+import LoginForm from "./components/auth/LoginForm";
+import SignupForm from "./components/auth/SignupForm";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/follow" element={<Follow />} />
-        <Route path="/profile" element={<Profile />} />
+      <Route path="/" element={<LoginForm />} /> 
+      <Route path="/signup" element={<SignupForm/>}/>
+      <Route path='/app' element={<Layout />}>
+        <Route path="home" element={<Home />} />
+        <Route path="explore" element={<Explore />} />
+        <Route path="follow" element={<Follow />} />
+        <Route path="profile" element={<Profile />} />
       </Route>
     </Routes>
   );

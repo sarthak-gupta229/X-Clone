@@ -11,6 +11,9 @@ export default defineConfig({
         target: "https://www.reddit.com",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
+        headers: {
+          "User-Agent": "XClone/1.0.0 (Personal Project)",
+        },
       },
     },
   },
