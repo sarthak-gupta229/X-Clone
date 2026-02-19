@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import {
   MessageCircle,
   Repeat,
@@ -7,10 +8,20 @@ import {
   BadgeCheck,
 } from "lucide-react";
 
+
 function Tweetcard({ post }) {
+  const [likes, setLikes] = useState(post.likes);
+  const [liked, setLiked] = useState(false);
+
+const handleLike = () => {
+  setLiked(prevLiked => {
+    setLikes(prevLikes => prevLiked ? prevLikes - 1 : prevLikes + 1);
+    return !prevLiked;
+  });
+};
   return (
     <div className="border-b border-gray-800 p-4 hover:bg-gray-950 transition">
-      {/* header */}
+      {/* headerr */}
       <div className="flex gap-3">
         <img
           src={`https://api.dicebear.com/7.x/initials/svg?seed=${post.username}`}
@@ -43,8 +54,11 @@ function Tweetcard({ post }) {
       )}
       {/* liks etc */}
       <div className="flex justify-between text-gray-400 mt-3 text-sm max-w-md">
-        <span className="flex items-center gap-1 hover:text-pink-500 cursor-pointer">
-          <Heart size={16} /> {post.likes}
+        <span
+          className="flex items-center gap-1 cursor-pointer"
+          onClick={handleLike}
+        >
+          <Heart size={16} className={liked ? "text-red-500" : ""}/> {likes}
         </span>
         <span className="flex items-center gap-1 hover:text-blue-400 cursor-pointer">
           <MessageCircle size={16} /> {post.comments}

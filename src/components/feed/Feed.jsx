@@ -25,7 +25,7 @@ export default function Feed() {
         }
 
       const res = await fetch(url);
-      if (!res.ok) throw new Error();
+      // if (!res.ok) throw new Error();
 
       const data = await res.json();
 
