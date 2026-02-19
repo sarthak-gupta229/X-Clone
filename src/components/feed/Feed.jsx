@@ -6,7 +6,7 @@ export default function Feed() {
   const [after, setAfter] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  
+
   const loaderRef = useRef(null);
   useEffect(() => {
     fetchPosts();
@@ -19,13 +19,13 @@ export default function Feed() {
     setError(false);
 
     try {
-      let url = `/api/r/all/hot.json?limit=20`;
-       if (after) {
+      let url = `//www.reddit.com/r/all/hot.json?limit=10`;
+      if (after) {
         url += `&after=${after}`;
-        }
+      }
 
       const res = await fetch(url);
-      // if (!res.ok) throw new Error();
+      if (!res.ok) throw new Error();
 
       const data = await res.json();
 
@@ -47,10 +47,7 @@ export default function Feed() {
     }
 
     setLoading(false);
-    
-
   }
-
 
   return (
     <div className="max-w-xl mx-auto">
