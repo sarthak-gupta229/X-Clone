@@ -6,7 +6,7 @@ function TrendingPosts() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("//www.reddit.com/r/popular.json?limit=5")
+    fetch("/api/r/popular.json?limit=5")
       .then((res) => res.json())
       .then((data) => {
         const formatted = data.data.children.map((item) => ({
@@ -47,8 +47,8 @@ function TrendingPosts() {
 
 function Rightend() {
   return (
-    <aside className="hidden lg:block w-[450px] pl-4 pr-25 py-2 bg-black border-l-1 border-l-[#2f3336] flex flex-col  box-border overflow-y-auto h-screen">
-      <div className="flex items-center gap-3 bg-black px-4 py-2 mb-2 rounded-full border-1 border-[#2f3336] focus-within:outline-none focus-within:ring-0 focus-within:border-[#1d9bf0]">
+    <aside className="hidden lg:flex w-[450px] pl-4 pr-4 py-2 bg-black border-l border-[#2f3336] flex-col box-border overflow-y-auto h-screen">
+      <div className="flex items-center gap-3 bg-black px-4 py-2 mb-2 rounded-full border border-[#2f3336] focus-within:outline-none focus-within:ring-0 focus-within:border-[#1d9bf0]">
         <Search size={20} className="text-gray-400" />
         <input
           type="text"
@@ -57,7 +57,7 @@ function Rightend() {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <div className="border-1  border-[#2f3336] h-fit rounded-xl text-left p-4 flex flex-col gap-2">
+        <div className="border border-[#2f3336] h-fit rounded-xl text-left p-4 flex flex-col gap-2">
           <h1 className="font-bold ">Subscribe to Premium</h1>
           <p>
             Subscribe to unlock new features and if eligible, receive a share of
@@ -67,7 +67,7 @@ function Rightend() {
             Subscribe
           </button>
         </div>
-        <div className="border-1  border-[#2f3336] h-fit rounded-xl text-left p-4 flex flex-col gap-2">
+        <div className="border border-[#2f3336] h-fit rounded-xl text-left p-4 flex flex-col gap-2">
           <h1 className="font-bold">Live on X</h1>
           <div className="flex gap-1">
             <div className="rounded-full w-fit bg-[#ED2224] ">
@@ -95,7 +95,7 @@ function Rightend() {
             </div>
           </div>
         </div>
-        <div className="border-1  border-[#2f3336] h-fit rounded-xl text-left p-4 flex flex-col gap-2">
+        <div className="border border-[#2f3336] h-fit rounded-xl text-left p-4 flex flex-col gap-2">
           <TrendingPosts />
         </div>
       </div>
