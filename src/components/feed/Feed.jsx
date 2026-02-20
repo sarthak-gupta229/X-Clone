@@ -22,7 +22,7 @@ export default function Feed() {
     setError(false);
 
     try {
-      let url = `/api/reddit?path=r/all/hot.json&limit=10`;
+      let url = `/api/r/all/hot.json?limit=10`;
       if (after) {
         url += `&after=${after}`;
       }
