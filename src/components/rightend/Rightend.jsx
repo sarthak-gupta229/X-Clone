@@ -7,7 +7,7 @@ function TrendingPosts() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("/api/r/popular.json?limit=5")
+    fetch("/api/reddit?path=r/popular.json&limit=5")
       .then((res) => res.json())
       .then((data) => {
         const formatted = data.data.children.map((item) => ({

@@ -7,10 +7,18 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     proxy: {
-      "/api": {
+      "/api/reddit": {
         target: "https://www.reddit.com",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
+        rewrite: (path) => {
+          // Convert /api/reddit?path=r/all/hot.json&limit=10
+          // to /r/all/hot.json?limit=10
+          const url = new URL(path, "http://localhost");
+          const redditPath = url.searchParams.get("path") || "";
+          url.searchParams.delete("path");
+          const remainingQuery = url.searchParams.toString();
+          return `/${redditPath}${remainingQuery ? "?" + remainingQuery : ""}`;
+        },
         headers: {
           "User-Agent": "XClone/1.0.0 (Personal Project)",
         },

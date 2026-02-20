@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Tweetcard from "../tweetcard/Tweetcard";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
@@ -15,14 +15,14 @@ export default function Feed() {
     fetchPosts();
   }, []);
 
-  const fetchPosts = useCallback(async () => {
+  async function fetchPosts() {
     if (loading) return;
 
     setLoading(true);
     setError(false);
 
     try {
-      let url = `/api/r/all/hot.json?limit=10`;
+      let url = `/api/reddit?path=r/all/hot.json&limit=10`;
       if (after) {
         url += `&after=${after}`;
       }
@@ -50,7 +50,7 @@ export default function Feed() {
     }
 
     setLoading(false);
-  }, [after]);
+  }
 
   return (
     <div className="max-w-xl mx-auto">
