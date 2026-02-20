@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import Tweetcard from "../tweetcard/Tweetcard";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
@@ -15,9 +15,7 @@ export default function Feed() {
     fetchPosts();
   }, []);
 
-
-
- async function fetchPosts() {
+  const fetchPosts = useCallback(async () => {
     if (loading) return;
 
     setLoading(true);
@@ -52,7 +50,7 @@ export default function Feed() {
     }
 
     setLoading(false);
-  }
+  }, [after]);
 
   return (
     <div className="max-w-xl mx-auto">
@@ -63,7 +61,12 @@ export default function Feed() {
         {loading && "Loading..."}
         {error && <button onClick={fetchPosts}>Retry</button>}
       </div>
-      <button className="bg-white text-black px-3 rounded-4xl " onClick={fetchPosts}>reload</button>
+      <button
+        className="bg-white text-black px-3 rounded-4xl "
+        onClick={fetchPosts}
+      >
+        reload
+      </button>
     </div>
   );
 }
