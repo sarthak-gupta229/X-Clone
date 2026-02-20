@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import Tweetcard from "../tweetcard/Tweetcard";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 export default function Feed() {
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
+  const { posts, setPosts } = useContext(UserContext);
   const [after, setAfter] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -12,7 +15,9 @@ export default function Feed() {
     fetchPosts();
   }, []);
 
-  async function fetchPosts() {
+
+
+ async function fetchPosts() {
     if (loading) return;
 
     setLoading(true);
@@ -54,11 +59,11 @@ export default function Feed() {
       {posts.map((post) => (
         <Tweetcard key={post.id} post={post} />
       ))}
-
       <div ref={loaderRef} className="py-6 text-center">
         {loading && "Loading..."}
         {error && <button onClick={fetchPosts}>Retry</button>}
       </div>
+      <button className="bg-white text-black px-3 rounded-4xl " onClick={fetchPosts}>reload</button>
     </div>
   );
 }

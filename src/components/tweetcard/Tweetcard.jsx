@@ -8,17 +8,16 @@ import {
   BadgeCheck,
 } from "lucide-react";
 
-
 function Tweetcard({ post }) {
   const [likes, setLikes] = useState(post.likes);
   const [liked, setLiked] = useState(false);
 
-const handleLike = () => {
-  setLiked(prevLiked => {
-    setLikes(prevLikes => prevLiked ? prevLikes - 1 : prevLikes + 1);
-    return !prevLiked;
-  });
-};
+  const handleLike = () => {
+    setLiked((prevLiked) => {
+      setLikes((prevLikes) => (prevLiked ? prevLikes - 1 : prevLikes + 1));
+      return !prevLiked;
+    });
+  };
   return (
     <div className="border-b border-gray-800 p-4 hover:bg-gray-950 transition">
       {/* headerr */}
@@ -58,7 +57,7 @@ const handleLike = () => {
           className="flex items-center gap-1 cursor-pointer"
           onClick={handleLike}
         >
-          <Heart size={16} className={liked ? "text-red-500" : ""}/> {likes}
+          <Heart size={16} fill={liked ? "red" : ""} /> {likes}
         </span>
         <span className="flex items-center gap-1 hover:text-blue-400 cursor-pointer">
           <MessageCircle size={16} /> {post.comments}

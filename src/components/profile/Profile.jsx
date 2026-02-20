@@ -4,7 +4,7 @@ import { UserContext } from "../../context/UserContext";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 function Profile() {
-  const { user } = useContext(UserContext);
+  const { user,following } = useContext(UserContext);
   return (
     <div className="flex-1 border-r border-r-[#2f3336] overflow-y-auto h-screen text-white">
       <div className="h-fit border-1 border-[#2f3336] flex items-center gap-5 p-3">
@@ -33,7 +33,10 @@ function Profile() {
       </div>
       <div className="pl-10">
       <h1 className="pt-30 text-4xl font-bold" >{user?.username || "Unknown"}</h1>
+      <div className="flex gap-5">
       <p className="text-gray-500">{ "@"+(user?.username || "Unknown")}</p>
+      <p className="text-gray-500">Following : {following}</p>
+      </div>
       </div>
     </div>
   );

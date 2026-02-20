@@ -19,35 +19,35 @@ const sidebarLinks = [
     icon: Home,
   },
   {
-    label: "Explore",
-    path: "/app/explore",
-    icon: Search,
-  },
-  {
     label: "Follow",
     path: "/app/follow",
     icon: UserPlus,
   },
   //   {
-  //     label: "Notifications",
-  //     path: "/notifications",
-  //     icon: Bell,
-  //   },
-  //   {
-  //     label: "Messages",
-  //     path: "/messages",
-  //     icon: Mail,
-  //   },
-  //   {
-  //     label: "Bookmarks",
-  //     path: "/bookmarks",
-  //     icon: Bookmark,
-  //   },
-  {
-    label: "Profile",
-    path: "/app/profile",
-    icon: User,
-  },
+    //     label: "Notifications",
+    //     path: "/notifications",
+    //     icon: Bell,
+    //   },
+    //   {
+      //     label: "Messages",
+      //     path: "/messages",
+      //     icon: Mail,
+      //   },
+      //   {
+        //     label: "Bookmarks",
+        //     path: "/bookmarks",
+        //     icon: Bookmark,
+        //   },
+        {
+          label: "Profile",
+          path: "/app/profile",
+          icon: User,
+        },
+        {
+          label: "Explore",
+          path: "/app/explore",
+          icon: Search,
+        },
 ];
 
 function Sidebar() {
