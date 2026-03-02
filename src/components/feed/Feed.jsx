@@ -22,7 +22,7 @@ export default function Feed() {
     setError(false);
 
     try {
-      let url = `/api/r/all/hot.json?limit=10`;
+      let url = "/api/reddit";
       const res = await fetch(url);
       if (!res.ok) throw new Error(res.status);
 
