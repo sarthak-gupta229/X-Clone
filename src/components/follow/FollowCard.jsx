@@ -19,12 +19,19 @@ function FollowCard({ post, following, setfollowing }) {
     <div className="flex py-5 px-6 gap-2 justify-between">
       <div className="flex gap-4">
         <img
-          src={`https://api.dicebear.com/7.x/initials/svg?seed=${post.username}`}
+          src={post.avatar}
+          onError={(e) => {
+            e.target.src = `https://api.dicebear.com/7.x/initials/svg?seed=${post.username}`;
+          }}
           className="w-10 h-10 rounded-full"
         />
-        <h1>{post.username}</h1>
+        <div className="flex flex-col">
+          <h1>{post.name}</h1>
+          <h1 className="text-gray-500">@{post.username}</h1>
+        </div>
+
         <span>
-          <BadgeCheck fill="" />
+          <BadgeCheck className="text-blue-500" />
         </span>
       </div>
       <div>
@@ -40,3 +47,23 @@ function FollowCard({ post, following, setfollowing }) {
 }
 
 export default FollowCard;
+//  <div className="flex py-5 px-6 gap-2 justify-between">
+//       <div className="flex gap-4">
+//         <img
+//            src={post.avatar}
+//           className="w-10 h-10 rounded-full"
+//         />
+//         <h1>{post.username}</h1>
+//         <span>
+//           <BadgeCheck fill="" />
+//         </span>
+//       </div>
+//       <div>
+//         <button
+//           className="bg-white  text-black px-3 rounded-4xl py-2 "
+//           onClick={handlefollow}
+//         >
+//           {follow ? "Unfollow" : "Follow"}
+//         </button>
+//       </div>
+//     </div>
