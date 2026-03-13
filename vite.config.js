@@ -6,13 +6,10 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     proxy: {
-      "/api": {
-        target: "https://www.reddit.com",
+      "/gnews": {
+        target: "https://gnews.io",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
-        headers: {
-          "User-Agent": "XClone/1.0.0 (Personal Project)",
-        },
+        rewrite: (path) => path.replace(/^\/gnews/, ""),
       },
     },
   },

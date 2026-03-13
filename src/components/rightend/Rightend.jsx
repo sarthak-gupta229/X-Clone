@@ -12,7 +12,7 @@ function TrendingPosts() {
       try {
         const API_KEY = "49e99235ed39451e974188ce2cd24953";
         const res = await fetch(
-          `https://gnews.io/api/v4/top-headlines?category=general&lang=en&apikey=${API_KEY}`,
+          `/gnews/api/v4/top-headlines?category=general&lang=en&apikey=${API_KEY}`,
         );
         if (!res.ok) {
           throw new Error(`Server Error: ${res.status}`);
