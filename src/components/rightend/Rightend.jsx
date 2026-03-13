@@ -4,42 +4,57 @@ import { useState, useEffect } from "react";
 import "../../index.css";
 
 function TrendingPosts() {
-  const [posts, setPosts] = useState([]);
+  const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   useEffect(() => {
-    fetch("//www.reddit.com/r/popular.json?limit=5")
-      .then((res) => res.json())
-      .then((data) => {
-        const formatted = data.data.children.map((item) => ({
-          id: item.data.id,
-          title: item.data.title,
-          author: item.data.author,
-          ups: item.data.ups,
-          comments: item.data.num_comments,
+    async function fetchNews() {
+      try {
+        const API_KEY = "49e99235ed39451e974188ce2cd24953";
+        const res = await fetch(
+          `https://gnews.io/api/v4/top-headlines?category=general&lang=en&apikey=${API_KEY}`,
+        );
+        if (!res.ok) {
+          throw new Error(`Server Error: ${res.status}`);
+        }
+
+        const data = await res.json();
+
+        const extracted = data.articles.map((article) => ({
+          source: article.source.name,
+          title: article.title,
+          description: article.description,
+          image: article.image,
+          url: article.url,
+          publishedAt: article.publishedAt,
         }));
-        setPosts(formatted);
+
+        setNews(extracted);
+      } catch (err) {
+        console.error("Error:", err);
+      } finally {
         setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching trending posts:", error);
-        setLoading(false);
-        setPosts([]);
-      });
+      }
+    }
+
+    fetchNews();
   }, []);
   if (loading)
     return <p className="text-gray-400">Loading trending posts...</p>;
-  if (posts.length === 0)
-    return <p className="text-gray-400">No trending posts available</p>;
 
   return (
     <div>
-      <h2>🔥 Trending</h2>
-      {posts.map((post) => (
-        <div key={post.id} className=" p-3">
-          <h3>{post.title}</h3>
-          <p className="text-sm text-gray-500">
-            @{post.author} · {post.ups} likes · 💬 {post.comments}
-          </p>
+      <h1 className="font-bold mb-2.5">Trending News</h1>
+      {news.map((article, index) => (
+        <div key={index}>
+          <img src={article.image} alt={article.title} />
+          <h3 className="mt-3">{article.title}</h3>
+          <p className="text-gray-600">@{article.source}</p>
+          <p className="text-gray-400">{article.description}</p>
+          <a href={article.url} target="_blank">
+            Read More
+          </a>
+          <div class="border-t border-[#2f3336] w-[95%] p-3.5"></div>
         </div>
       ))}
     </div>
