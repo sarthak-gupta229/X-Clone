@@ -3,8 +3,9 @@ import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import PostCard from "../post/PostCard";
 function Profile() {
-  const { user,following } = useContext(UserContext);
+  const { user, following, userpost } = useContext(UserContext);
   return (
     <div className="flex-1 border-r border-r-[#2f3336] overflow-y-auto h-screen text-white">
       <div className="h-fit border-1 border-[#2f3336] flex items-center gap-5 p-3">
@@ -32,11 +33,23 @@ function Profile() {
         </div>
       </div>
       <div className="pl-10">
-      <h1 className="pt-30 text-4xl font-bold" >{user?.username || "Unknown"}</h1>
-      <div className="flex gap-5">
-      <p className="text-gray-500">{ "@"+(user?.username || "Unknown")}</p>
-      <p className="text-gray-500">Following : {following}</p>
+        <h1 className="pt-30 text-4xl font-bold">
+          {user?.username || "Unknown"}
+        </h1>
+        <div className="flex gap-5">
+          <p className="text-gray-500">{"@" + (user?.username || "Unknown")}</p>
+          <p className="text-gray-500">Following : {following}</p>
+        </div>
       </div>
+      <div className="px-8 pb-4">
+        <h1 className="pt-10 text-1xl pl-2">Posts</h1>
+        <div className="border-t-2 border-blue-500 w-16"></div>
+      </div>
+      <div className="px-2">
+        {userpost &&
+          userpost.map((post, index) => (
+            <PostCard key={index} postText={post} />
+          ))}
       </div>
     </div>
   );

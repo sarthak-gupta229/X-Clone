@@ -1,8 +1,11 @@
 import React from "react";
 import { BadgeCheck } from "lucide-react";
 import { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 function FollowCard({ post, following, setfollowing }) {
+  const { userfollowing, setuserfollowing } = useContext(UserContext);
   const [follow, setfollow] = useState(false);
 
   function handlefollow() {
@@ -47,23 +50,3 @@ function FollowCard({ post, following, setfollowing }) {
 }
 
 export default FollowCard;
-//  <div className="flex py-5 px-6 gap-2 justify-between">
-//       <div className="flex gap-4">
-//         <img
-//            src={post.avatar}
-//           className="w-10 h-10 rounded-full"
-//         />
-//         <h1>{post.username}</h1>
-//         <span>
-//           <BadgeCheck fill="" />
-//         </span>
-//       </div>
-//       <div>
-//         <button
-//           className="bg-white  text-black px-3 rounded-4xl py-2 "
-//           onClick={handlefollow}
-//         >
-//           {follow ? "Unfollow" : "Follow"}
-//         </button>
-//       </div>
-//     </div>

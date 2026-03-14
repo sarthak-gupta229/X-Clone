@@ -2,9 +2,15 @@ import React from "react";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import { Earth } from "lucide-react";
+import { useState } from "react";
 
 function Post() {
-  const { user, following } = useContext(UserContext);
+  const [post, setPost] = useState("");
+  const { user, following, userpost, setUserpost } = useContext(UserContext);
+  function handlePost() {
+    setUserpost([...userpost, post]);
+    setPost("");
+  }
   return (
     <>
       <div className=" border-1 border-[#2f3336] w-full py-3 px-2">
@@ -20,6 +26,8 @@ function Post() {
               type="text"
               className="w-full text-2xl border-none outline-none h-fit"
               placeholder="What's happening?!"
+              value={post}
+              onChange={(e) => setPost(e.target.value)}
             />
           </div>
         </div>
@@ -29,7 +37,10 @@ function Post() {
             <Earth className="text-blue-500" />
             <p className="text-blue-500">Everyone can see your post</p>
           </span>
-          <button className="bg-white  text-black px-3 rounded-4xl py-2 ">
+          <button
+            className="bg-white  text-black px-3 rounded-4xl py-2 "
+            onClick={post ? handlePost : () => {}}
+          >
             Post
           </button>
         </div>
