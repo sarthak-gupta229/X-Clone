@@ -16,6 +16,7 @@ function TrendingPosts() {
         }
 
         const data = await res.json();
+        // console.log(data);
 
         const extracted = data.articles.map((article) => ({
           source: article.source.name,
