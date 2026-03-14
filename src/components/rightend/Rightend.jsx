@@ -10,10 +10,7 @@ function TrendingPosts() {
   useEffect(() => {
     async function fetchNews() {
       try {
-        const API_KEY = "49e99235ed39451e974188ce2cd24953";
-        const res = await fetch(
-          `/gnews/api/v4/top-headlines?category=general&lang=en&apikey=${API_KEY}`,
-        );
+        const res = await fetch(`/api/news?category=general&lang=en`);
         if (!res.ok) {
           throw new Error(`Server Error: ${res.status}`);
         }
