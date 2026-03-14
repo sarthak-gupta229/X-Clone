@@ -6,6 +6,7 @@ export default function UserProvider({children}){
     const [user,setUser]=useState(null);
     const [posts, setPosts] = useState([]);
     const [following,setfollowing]=useState(0)
+    const [follow,setFollow]=useState([])
     const login =((username,password)=>{
         if(password[0] === "@"){
             setUser({ username, password });
@@ -19,7 +20,7 @@ export default function UserProvider({children}){
     };
     return (
           
-    <UserContext.Provider value={{ user, login, logout,posts,setPosts,following,setfollowing }}>
+    <UserContext.Provider value={{ user, login, logout,posts,setPosts,following,setfollowing,follow,setFollow }}>
       {children}
     </UserContext.Provider>
   

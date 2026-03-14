@@ -10,7 +10,7 @@ function Home() {
         <h1>Home</h1>
       </div>
       <div className="flex flex-col h-fit">
-        <Post />
+        
         <Feed />
       </div>
     </div>

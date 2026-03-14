@@ -31,7 +31,7 @@ function TrendingPosts() {
 
         setNews(extracted);
       } catch (err) {
-        console.error("Error:", err);
+        console.log("Error:", err);
       } finally {
         setLoading(false);
       }
