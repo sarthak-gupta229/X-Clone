@@ -2,11 +2,38 @@ import React, { useEffect, useState, useRef } from "react";
 import Tweetcard from "../tweetcard/Tweetcard";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import { RefreshCw } from "lucide-react";
+
+export async function getHNPosts(type = "topstories", limit = 20) {
+  const ids = await fetch(
+    `https://hacker-news.firebaseio.com/v0/${type}.json`,
+  ).then((r) => r.json());
+
+  const stories = await Promise.all(
+    ids
+      .slice(0, limit)
+      .map((id) =>
+        fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`).then(
+          (r) => r.json(),
+        ),
+      ),
+  );
+
+  return stories.map((s) => ({
+    id: s.id,
+    title: s.title,
+    author: s.by,
+    score: s.score,
+    comments: s.descendants || 0,
+    url: s.url || `https://news.ycombinator.com/item?id=${s.id}`,
+    source: s.url ? new URL(s.url).hostname : "news.ycombinator.com",
+    created: s.time,
+    type: s.type,
+  }));
+}
 
 export default function Feed() {
-  // const [posts, setPosts] = useState([]);
   const { posts, setPosts } = useContext(UserContext);
-  const [after, setAfter] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -22,26 +49,15 @@ export default function Feed() {
     setError(false);
 
     try {
-      let url = `/api/r/all/hot.json?limit=10`;
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(res.status);
+      const newPosts = await getHNPosts("topstories", 20);
 
-      const data = await res.json();
-
-      const newPosts = data.data.children.map(({ data: d }) => ({
-        id: d.id,
-        username: d.author,
-        time: d.created_utc,
-        text: d.title || d.selftext,
-        image: d.post_hint === "image" ? d.url_overridden_by_dest : null,
-        video: d.media?.reddit_video?.fallback_url || null,
-        likes: d.ups,
-        comments: d.num_comments,
-      }));
-
-      setPosts((prev) => [...prev, ...newPosts]);
-      setAfter(data.data.after);
+      setPosts((prev) => {
+        const existingIds = new Set(prev.map((p) => p.id));
+        const filteredNewPosts = newPosts.filter((p) => !existingIds.has(p.id));
+        return [...prev, ...filteredNewPosts];
+      });
     } catch (err) {
+      console.error(err);
       setError(true);
     }
 
@@ -53,16 +69,22 @@ export default function Feed() {
       {posts.map((post) => (
         <Tweetcard key={post.id} post={post} />
       ))}
-      <div ref={loaderRef} className="py-6 text-center">
+      <div ref={loaderRef} className="py-6 text-center text-gray-400">
         {loading && "Loading..."}
-        {error && <button onClick={fetchPosts}>Retry</button>}
+        {error && (
+          <button className="text-blue-500" onClick={fetchPosts}>
+            Retry
+          </button>
+        )}
       </div>
-      <button
-        className="bg-white text-black px-3 rounded-4xl "
-        onClick={fetchPosts}
-      >
-        reload
-      </button>
+      <div className="flex justify-center items-center w-full">
+        <button
+          className="text-black px-3 py-1 rounded-full font-semibold "
+          onClick={fetchPosts}
+        >
+          <RefreshCw className="text-white bg-black" />
+        </button>
+      </div>
     </div>
   );
 }

@@ -24,30 +24,30 @@ const sidebarLinks = [
     icon: UserPlus,
   },
   //   {
-    //     label: "Notifications",
-    //     path: "/notifications",
-    //     icon: Bell,
-    //   },
-    //   {
-      //     label: "Messages",
-      //     path: "/messages",
-      //     icon: Mail,
-      //   },
-      //   {
-        //     label: "Bookmarks",
-        //     path: "/bookmarks",
-        //     icon: Bookmark,
-        //   },
-        {
-          label: "Profile",
-          path: "/app/profile",
-          icon: User,
-        },
-        {
-          label: "Explore",
-          path: "/app/explore",
-          icon: Search,
-        },
+  //     label: "Notifications",
+  //     path: "/notifications",
+  //     icon: Bell,
+  //   },
+  //   {
+  //     label: "Messages",
+  //     path: "/messages",
+  //     icon: Mail,
+  //   },
+  //   {
+  //     label: "Bookmarks",
+  //     path: "/bookmarks",
+  //     icon: Bookmark,
+  //   },
+  {
+    label: "Profile",
+    path: "/app/profile",
+    icon: User,
+  },
+  {
+    label: "Explore",
+    path: "/app/explore",
+    icon: Search,
+  },
 ];
 
 function Sidebar() {
@@ -83,11 +83,14 @@ function Sidebar() {
         </nav>
       </div>
 
-      <button className="mt-4 bg-white text-black py-3 w-50 rounded-full font-bold text-lg hover:bg-gray-200 transition">
-        Post
-      </button>
-  
-
+      <div className="mt-10 ml-5">
+        <NavLink
+          to="/app/home"
+          className="mt-10 bg-white text-black py-3 w-[100px] px-15 rounded-full font-bold text-lg hover:bg-gray-200 transition"
+        >
+          Post
+        </NavLink>
+      </div>
     </div>
   );
 }

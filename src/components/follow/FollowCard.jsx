@@ -13,8 +13,15 @@ function FollowCard({ post, following, setfollowing }) {
     setfollow(nextFollow);
     if (nextFollow) {
       setfollowing((prev) => prev + 1);
+      setuserfollowing((prev) => [
+        ...prev,
+        { username: post.username, avatar: post.avatar, status: nextFollow },
+      ]);
     } else {
       setfollowing((prev) => prev - 1);
+      setuserfollowing((prev) =>
+        prev.filter((item) => item.username !== post.username),
+      );
     }
   }
 
