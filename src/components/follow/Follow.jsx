@@ -8,8 +8,10 @@ import Feed from "../feed/Feed";
 import people from "../../../data/x_famous_people_all200.json";
 
 function Follow() {
+  
   const { posts, setPosts, following, setfollowing, follow, setFollow } =
     useContext(UserContext);
+    
 
   return (
     <div className="flex-1 border-r border-r-[#2f3336] overflow-y-auto h-screen ">

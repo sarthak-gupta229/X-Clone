@@ -7,8 +7,10 @@ import { useState } from "react";
 function Post() {
   const [post, setPost] = useState("");
   const { user, following, userpost, setUserpost } = useContext(UserContext);
+  const now = new Date();
+  const time = now.toLocaleTimeString();
   function handlePost() {
-    setUserpost([...userpost, post]);
+    setUserpost([{ text: post, time: time }, ...userpost]);
     setPost("");
   }
   return (

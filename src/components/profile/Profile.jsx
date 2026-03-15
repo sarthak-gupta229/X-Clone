@@ -48,7 +48,7 @@ function Profile() {
       <div className="px-2">
         {userpost &&
           userpost.map((post, index) => (
-            <PostCard key={index} postText={post} />
+            <PostCard key={index} postObj={post} />
           ))}
       </div>
     </div>

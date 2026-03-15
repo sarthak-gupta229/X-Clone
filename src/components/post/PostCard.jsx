@@ -3,15 +3,15 @@ import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import { Heart, MessageCircle, Repeat, BarChart2, Trash } from "lucide-react";
 
-export default function PostCard({ postText }) {
-  const { user } = useContext(UserContext);
+export default function PostCard({ postObj }) {
+  const { user, userpost, setUserpost } = useContext(UserContext);
 
   const liked = false;
   const likes = 0;
   const comments = 0;
 
   function handleDelete() {
-    setUserpost(userpost.filter((post) => post !== postText));
+    setUserpost(userpost.filter((post) => post !== postObj));
   }
 
   return (
@@ -29,8 +29,13 @@ export default function PostCard({ postText }) {
           />
         </div>
         <div className="w-full text-left">
-          <h1 className="text-gray-600">{user?.username || "Unknown"}</h1>
-          <p className="text-white mt-1">{postText}</p>
+          <div className="flex items-center gap-2">
+            <h1 className="text-gray-300 font-bold">
+              {user?.username || "Unknown"}
+            </h1>
+            <p className="text-gray-500 text-sm">Posted at {postObj.time}</p>
+          </div>
+          <p className="text-white mt-1">{postObj.text}</p>
 
           <div className="flex justify-between text-gray-400 mt-3 text-sm max-w-md">
             <span className="flex items-center gap-1 cursor-pointer">

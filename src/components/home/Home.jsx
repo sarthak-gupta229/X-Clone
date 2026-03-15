@@ -18,7 +18,7 @@ function Home() {
         <Post />
         {userpost &&
           userpost.map((singlePost, index) => (
-            <PostCard key={index} postText={singlePost} />
+            <PostCard key={index} postObj={singlePost} />
           ))}
         <Feed />
       </div>
