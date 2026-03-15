@@ -13,10 +13,8 @@ function Tweetcard({ post }) {
   const [liked, setLiked] = useState(false);
 
   const handleLike = () => {
-    setLiked((prevLiked) => {
-      setLikes((prevLikes) => (prevLiked ? prevLikes - 1 : prevLikes + 1));
-      return !prevLiked;
-    });
+    setLikes((prevLikes) => (liked ? prevLikes - 1 : prevLikes + 1));
+    setLiked(!liked);
   };
 
   const username = post.author || post.username || "Anonymous";
