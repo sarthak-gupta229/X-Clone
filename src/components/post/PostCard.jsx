@@ -1,17 +1,22 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import { Heart, MessageCircle, Repeat, BarChart2, Trash } from "lucide-react";
 
 export default function PostCard({ postObj }) {
   const { user, userpost, setUserpost } = useContext(UserContext);
+  const [userliked, setuserLiked] = useState(false);
+  const [likes, setLikes] = useState(0);
 
-  const liked = false;
-  const likes = 0;
   const comments = 0;
 
   function handleDelete() {
     setUserpost(userpost.filter((post) => post !== postObj));
+  }
+
+  function handleLike() {
+    setLikes(userliked ? likes - 1 : likes + 1);
+    setuserLiked(!userliked);
   }
 
   return (
@@ -39,7 +44,12 @@ export default function PostCard({ postObj }) {
 
           <div className="flex justify-between text-gray-400 mt-3 text-sm max-w-md">
             <span className="flex items-center gap-1 cursor-pointer">
-              <Heart size={16} fill={liked ? "red" : ""} /> {likes}
+              <Heart
+                size={16}
+                fill={userliked ? "red" : ""}
+                onClick={handleLike}
+              />{" "}
+              {likes}
             </span>
             <span className="flex items-center gap-1 hover:text-blue-400 cursor-pointer">
               <MessageCircle size={16} /> {comments}

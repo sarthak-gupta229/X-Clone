@@ -1,10 +1,10 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext";
 
 function LoginForm() {
-  const { login } = useContext(UserContext);
+  const { login, user } = useContext(UserContext);
   const navigate = useNavigate();
   const [wrong, setWrong] = useState(false);
 
@@ -27,17 +27,22 @@ function LoginForm() {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    const success = login(formData.username, formData.password);
+    const result = login(formData.username, formData.password);
 
-    if (success) {
+    if (result.success) {
       setWrong(false);
-      console.log(FormData)
       navigate("/app/home");
     } else {
-      setError("Password must start with @");
+      setError(result.message || "Invalid username or password.");
       setWrong(true);
     }
   }
+
+  useEffect(() => {
+    if (user) {
+      navigate("/app/home");
+    }
+  }, [user]);
 
   return (
     <div className="flex justify-evenly items-center h-screen p-16 text-white flex-wrap">

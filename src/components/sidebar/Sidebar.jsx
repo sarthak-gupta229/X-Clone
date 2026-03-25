@@ -1,5 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 import {
   Home,
@@ -51,6 +53,12 @@ const sidebarLinks = [
 ];
 
 function Sidebar() {
+  const { logout } = useContext(UserContext);
+  const navigate = useNavigate();
+  const handlelogout = () => {
+    logout();
+    navigate("/");
+  };
   return (
     <div className="hidden lg:block h-screen px-30 py-2 w-[400px] bg-black border-r border-black border-r-[#2f3336] flex flex-col border box-border">
       <div className="p-3 mb-4 rounded-full hover:bg-[#181818] w-fit cursor-pointer invert hover:invert-0">
@@ -86,10 +94,18 @@ function Sidebar() {
       <div className="mt-10 ml-5">
         <NavLink
           to="/app/home"
-          className="mt-10 bg-white text-black py-3 w-[100px] px-15 rounded-full font-bold text-lg hover:bg-gray-200 transition"
+          className="mt-10 bg-white text-black py-3 px-14 rounded-full font-bold text-lg hover:bg-gray-200 transition"
         >
           Post
         </NavLink>
+      </div>
+      <div className="mt-10 ml-5 absolute bottom-10">
+        <button
+          className="mt-10 bg-white text-black py-3 px-10 rounded-full font-bold text-lg hover:bg-gray-200 transition cursor-pointer"
+          onClick={handlelogout}
+        >
+          Logout
+        </button>
       </div>
     </div>
   );
