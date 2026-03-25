@@ -43,9 +43,9 @@ function Tweetcard({ post }) {
               href={post.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#1d9bf0] hover:underline text-sm block mt-1 truncate"
+              className="text-gray-600 hover:underline text-sm block mt-1 truncate"
             >
-              {post.url}
+              Read More
             </a>
           )}
         </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Search, BadgeCheck } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../../index.css";
 
 function TrendingPosts() {
@@ -62,14 +63,11 @@ function TrendingPosts() {
 function Rightend() {
   return (
     <aside className="hidden lg:block w-[450px] pl-4 pr-25 py-2 bg-black border-l-1 border-l-[#2f3336] flex flex-col  box-border overflow-y-auto h-screen">
-      <div className="flex items-center gap-3 bg-black px-4 py-2 mb-2 rounded-full border-1 border-[#2f3336] focus-within:outline-none focus-within:ring-0 focus-within:border-[#1d9bf0]">
-        <Search size={20} className="text-gray-400" />
-        <input
-          type="text"
-          placeholder="Search"
-          className="bg-transparent outline-none text-sm text-white w-full placeholder-gray-400"
-        />
-      </div>
+      <Link key="/app/explore" to="/app/explore">
+        <div className="flex items-center gap-3 bg-black px-4 py-2 mb-2 rounded-full border-1 border-[#2f3336] focus-within:outline-none focus-within:ring-0 focus-within:border-[#1d9bf0]">
+          <Search size={20} className="text-gray-400" />
+        </div>
+      </Link>
       <div className="flex flex-col gap-2">
         <div className="border-1  border-[#2f3336] h-fit rounded-xl text-left p-4 flex flex-col gap-2">
           <h1 className="font-bold ">Subscribe to Premium</h1>
