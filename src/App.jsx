@@ -1,9 +1,9 @@
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 import Layout from "./Layout";
-import Home from "./components/home/Home";
-import Explore from "./components/explore/Explore";
-import Follow from "./components/follow/Follow";
-import Profile from "./components/profile/Profile";
+import Home from "./pages/Home";
+import Explore from "./pages/Explore";
+import Follow from "./pages/Follow";
+import Profile from "./pages/Profile";
 import LoginForm from "./components/auth/LoginForm";
 import SignupForm from "./components/auth/SignupForm";
 function App() {

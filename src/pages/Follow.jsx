@@ -1,12 +1,11 @@
 import React from "react";
 import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
-import FollowCard from "./FollowCard";
+import { UserContext } from "../context/UserContext";
+import FollowCard from "../components/follow/FollowCard";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import Feed from "../feed/Feed";
-import people from "../../../data/x_famous_people_all200.json";
-import Mobilebar from "../mobilebar/Mobilebar";
+import people from "../../data/x_famous_people_all200.json";
+import Mobilebar from "../components/mobilebar/Mobilebar";
 
 function Follow() {
   const { posts, setPosts, following, setfollowing, follow, setFollow } =
@@ -34,7 +33,7 @@ function Follow() {
             setfollowing={setfollowing}
           />
         ))}
-        <Mobilebar className="sticky bottom-0" />
+        <Mobilebar />
       </div>
     </>
   );

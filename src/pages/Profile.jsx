@@ -1,10 +1,11 @@
 import React from "react";
 import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+import { UserContext } from "../context/UserContext";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import PostCard from "../post/PostCard";
-import Mobilebar from "../mobilebar/Mobilebar";
+import PostCard from "../components/post/PostCard";
+import Mobilebar from "../components/mobilebar/Mobilebar";
+
 function Profile() {
   const { user, following, userpost } = useContext(UserContext);
   return (

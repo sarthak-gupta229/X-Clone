@@ -25,21 +25,13 @@ const sidebarLinks = [
     path: "/app/follow",
     icon: UserPlus,
   },
-  //   {
-  //     label: "Notifications",
-  //     path: "/notifications",
-  //     icon: Bell,
-  //   },
+
   //   {
   //     label: "Messages",
   //     path: "/messages",
   //     icon: Mail,
   //   },
-  //   {
-  //     label: "Bookmarks",
-  //     path: "/bookmarks",
-  //     icon: Bookmark,
-  //   },
+
   {
     label: "Profile",
     path: "/app/profile",

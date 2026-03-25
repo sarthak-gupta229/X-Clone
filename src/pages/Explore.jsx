@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Search } from "lucide-react";
 import { useState, useEffect } from "react";
-import people from "../../../data/x_famous_people_all200.json";
+import people from "../../data/x_famous_people_all200.json";
 import { BadgeCheck } from "lucide-react";
-import Mobilebar from "../mobilebar/Mobilebar";
+import Mobilebar from "../components/mobilebar/Mobilebar";
 
 function Explore() {
   const [search, setSearch] = useState("");
@@ -20,9 +20,10 @@ function Explore() {
       );
     }
   }, [search]);
+
   function Card({ post }) {
     return (
-      <div className="flex py-5 px-6 gap-2 justify-between flex-col border-b-1 border-[#2f3336]">
+      <div className="flex py-5 px-6 gap-2 justify-between flex-col border-b border-[#2f3336]">
         <div className="flex gap-4">
           <img
             src={post.avatar}
@@ -36,7 +37,6 @@ function Explore() {
             <h1 className="text-gray-500">@{post.username}</h1>
             <h1 className="text-gray-500">Followers : {post.followers}</h1>
           </div>
-
           <span>
             <BadgeCheck className="text-blue-500" />
           </span>

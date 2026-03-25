@@ -1,11 +1,11 @@
 import React from "react";
-import Feed from "../feed/Feed";
-import ToLogin from "../loginbutton/ToLogin";
-import Post from "../post/Post";
-import PostCard from "../post/PostCard";
+import Feed from "../components/feed/Feed";
+import ToLogin from "../components/loginbutton/ToLogin";
+import Post from "../components/post/Post";
+import PostCard from "../components/post/PostCard";
 import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
-import Mobilebar from "../mobilebar/Mobilebar";
+import { UserContext } from "../context/UserContext";
+import Mobilebar from "../components/mobilebar/Mobilebar";
 
 function Home() {
   const { userpost } = useContext(UserContext);
@@ -23,7 +23,7 @@ function Home() {
           ))}
         <Feed />
       </div>
-      <Mobilebar className="sticky bottom-0" />
+      <Mobilebar />
     </div>
   );
 }
