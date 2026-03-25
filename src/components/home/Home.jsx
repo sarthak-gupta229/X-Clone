@@ -5,6 +5,7 @@ import Post from "../post/Post";
 import PostCard from "../post/PostCard";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import Mobilebar from "../mobilebar/Mobilebar";
 
 function Home() {
   const { userpost } = useContext(UserContext);
@@ -22,6 +23,7 @@ function Home() {
           ))}
         <Feed />
       </div>
+      <Mobilebar className="sticky bottom-0" />
     </div>
   );
 }

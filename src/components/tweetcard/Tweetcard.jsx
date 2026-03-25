@@ -21,7 +21,7 @@ function Tweetcard({ post }) {
   const text = post.title || post.text;
 
   return (
-    <div className="border-b border-gray-800 p-4 hover:bg-gray-950 transition">
+    <div className="border-b border-gray-800 p-4 hover:bg-gray-950 transition md:w-[600px] mx-auto">
       {/* headerr */}
       <div className="flex gap-3">
         <img
