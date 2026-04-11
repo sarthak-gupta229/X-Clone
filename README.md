@@ -1,16 +1,154 @@
-# React + Vite
+# 🐦 X-Clone (Twitter Clone)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive front-end application replicating the core UI and features of X (formerly Twitter), built with React and Vite.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- **Authentication**: Login and Signup pages
+- **Home Feed**: Browse and interact with tweets
+- **Explore**: Discover trending topics and news (powered by GNews API)
+- **Follow**: Find and follow suggested users
+- **Profile**: View user profile and tweet history
+- **Responsive UI**: Mobile-friendly layout with a dedicated mobile navigation bar
+- **Tweet Cards**: Like, comment, and retweet interactions
+- **Sidebar Navigation**: Desktop-first sidebar layout
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Technology          | Purpose                 |
+| ------------------- | ----------------------- |
+| React 19            | UI Framework            |
+| Vite                | Build Tool & Dev Server |
+| Tailwind CSS v4     | Styling                 |
+| React Router DOM v7 | Client-side Routing     |
+| Lucide React        | Icon Library            |
+| GNews API           | News/Explore Feed       |
+| YouTube Data API v3 | Embedded Media          |
+
+---
+
+## 📂 Project Structure
+
+```
+xclone/
+├── public/               # Public static assets
+├── src/
+│   ├── assets/           # Images, fonts, and static files
+│   ├── components/       # Reusable UI components
+│   │   ├── auth/         # Login & Signup forms
+│   │   ├── feed/         # Tweet feed components
+│   │   ├── follow/       # Follow card components
+│   │   ├── mobilebar/    # Mobile navigation bar
+│   │   ├── post/         # Post/compose box
+│   │   ├── rightend/     # Right sidebar (trending, suggestions)
+│   │   ├── sidebar/      # Desktop sidebar navigation
+│   │   └── tweetcard/    # Individual tweet card
+│   ├── context/          # React Context for global state
+│   ├── pages/            # Top-level page components
+│   │   ├── Home.jsx
+│   │   ├── Explore.jsx
+│   │   ├── Follow.jsx
+│   │   └── Profile.jsx
+│   ├── App.jsx           # Root component with routing
+│   ├── Layout.jsx        # Shared layout wrapper
+│   └── main.jsx          # Application entry point
+├── .env                  # Environment variables (not committed)
+├── vite.config.js        # Vite configuration
+└── package.json
+```
+
+---
+
+## ⚙️ Local Setup
+
+Follow these steps to run the project locally on your machine.
+
+### Prerequisites
+
+Make sure the following are installed:
+
+- [Node.js](https://nodejs.org/) (v18 or above recommended)
+- npm (comes with Node.js)
+
+---
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/your-username/xclone.git
+cd xclone
+```
+
+> Replace `your-username` with your actual GitHub username.
+
+---
+
+### Step 2: Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+### Step 3: Set Up Environment Variables
+
+Create a `.env` file in the project root and add the following:
+
+```env
+VITE_YOUTUBE_API_KEY=your_youtube_api_key_here
+```
+
+> You can get a YouTube Data API v3 key from the [Google Cloud Console](https://console.cloud.google.com/).
+
+> **Note:** The GNews API key is configured directly in `vite.config.js` as a proxy. No additional setup is required for it.
+
+---
+
+### Step 4: Start the Development Server
+
+```bash
+npm run dev
+```
+
+The app will be available at: **http://localhost:5173**
+
+---
+
+### Step 5: Navigate the App
+
+| Route          | Description        |
+| -------------- | ------------------ |
+| `/`            | Login Page         |
+| `/signup`      | Signup Page        |
+| `/app/home`    | Home Feed          |
+| `/app/explore` | Explore / Trending |
+| `/app/follow`  | Follow Suggestions |
+| `/app/profile` | User Profile       |
+
+---
+
+## 📜 Available Scripts
+
+| Command           | Description                  |
+| ----------------- | ---------------------------- |
+| `npm run dev`     | Start the development server |
+| `npm run build`   | Build for production         |
+| `npm run preview` | Preview the production build |
+| `npm run lint`    | Run ESLint checks            |
+
+---
+
+## 🌐 Deployment
+
+This project is configured for deployment on [Vercel](https://vercel.com/). A `vercel.json` config is already included to handle SPA routing redirects.
+
+---
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
