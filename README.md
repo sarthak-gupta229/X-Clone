@@ -27,7 +27,6 @@ A modern, responsive front-end application replicating the core UI and features 
 | React Router DOM v7 | Client-side Routing     |
 | Lucide React        | Icon Library            |
 | GNews API           | News/Explore Feed       |
-| YouTube Data API v3 | Embedded Media          |
 
 ---
 
@@ -35,6 +34,11 @@ A modern, responsive front-end application replicating the core UI and features 
 
 ```
 xclone/
+├── api/                  # Serverless API functions
+│   ├── news.js           # GNews API proxy handler
+│   └── reddit.js         # Reddit feed handler
+├── data/                 # Static data files
+│   └── x_famous_people_all200.json  # Seed data for follow suggestions
 ├── public/               # Public static assets
 ├── src/
 │   ├── assets/           # Images, fonts, and static files
@@ -56,7 +60,6 @@ xclone/
 │   ├── App.jsx           # Root component with routing
 │   ├── Layout.jsx        # Shared layout wrapper
 │   └── main.jsx          # Application entry point
-├── .env                  # Environment variables (not committed)
 ├── vite.config.js        # Vite configuration
 └── package.json
 ```
@@ -95,21 +98,7 @@ npm install
 
 ---
 
-### Step 3: Set Up Environment Variables
-
-Create a `.env` file in the project root and add the following:
-
-```env
-VITE_YOUTUBE_API_KEY=your_youtube_api_key_here
-```
-
-> You can get a YouTube Data API v3 key from the [Google Cloud Console](https://console.cloud.google.com/).
-
-> **Note:** The GNews API key is configured directly in `vite.config.js` as a proxy. No additional setup is required for it.
-
----
-
-### Step 4: Start the Development Server
+### Step 3: Start the Development Server
 
 ```bash
 npm run dev
@@ -119,7 +108,7 @@ The app will be available at: **http://localhost:5173**
 
 ---
 
-### Step 5: Navigate the App
+### Step 4: Navigate the App
 
 | Route          | Description        |
 | -------------- | ------------------ |

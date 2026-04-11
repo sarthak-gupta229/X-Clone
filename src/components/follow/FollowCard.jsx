@@ -35,7 +35,7 @@ function FollowCard({ post, following, setfollowing }) {
           }}
           className="w-10 h-10 rounded-full"
         />
-        <div className="flex flex-col">
+        <div className="flex flex-col ">
           <h1>{post.name}</h1>
           <h1 className="text-gray-500">@{post.username}</h1>
         </div>
